@@ -1,0 +1,9 @@
+// configuração da dependêcia @babel, essa dependência ira transpilar o código ES6 para uma versão legível aos navegadores mais antigos.
+//o preset-env informa que o babel vai monitorar o navegador.
+{
+    "presets": ["@babel/preset-env"], 
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-transform-async-to-generator"
+    ]
+}
