@@ -5,7 +5,7 @@ const api = axios.create({
 
 class App {
 
-    constructor(){
+    constructor() {
         this.repositories = []
 
         this.formEl = document.getElementById("repo-form")
@@ -14,13 +14,19 @@ class App {
         this.registerHendlers()
     }
 
-    registerHendlers(){
-        this.formEl.onsubmit = e =>  this.addRepository(e)
+    registerHendlers() {
+        this.formEl.onsubmit = e => this.addRepository(e)
+       
+    }
+    
+    clearScreen() {
+        this.repositories = []
+        this.listEl.innerHTML = ""
     }
 
-    setLoading(loading = true){
-        if (loading === true){
-            
+    setLoading(loading = true) {
+        if (loading === true) {
+
             let loadingEl = document.createElement('span')
             loadingEl.appendChild(document.createTextNode("Carregando perfil..."))
             loadingEl.setAttribute("id", "loading")
@@ -29,20 +35,20 @@ class App {
             divEl.appendChild(loadingEl)
 
             this.formEl.appendChild(divEl)
-        }else{
+        } else {
             document.getElementById('carregando').remove()
         }
     }
 
-    async addRepository(e){
+    async addRepository(e) {
         e.preventDefault()
 
         const repoInput = this.inputEl.value
 
-        if(repoInput.length === 0)
+        if (repoInput.length === 0)
             return
-        
-        
+
+
         this.setLoading()
 
         try {
@@ -54,22 +60,22 @@ class App {
                 description: response.data.bio,
                 avatar_url: response.data.avatar_url,
                 html_url: response.data.html_url
-    
+
             })
-    
+
             this.inputEl.value = ""
-    
+
             this.render()
+            
         } catch (error) {
             alert("O repositório não existe")
         }
 
         this.setLoading(false)
-        
+
     }
 
-    
-    render(){
+    render() {
         this.listEl.innerHTML = ""
 
         this.repositories.forEach(repo => {
@@ -97,7 +103,21 @@ class App {
             this.listEl.appendChild(listItemEl)
 
         })
+        
+        let btnClear = document.createElement('button')
+        btnClear.setAttribute("class", "btn btn-secondary")
+        btnClear.setAttribute("type", "submit")
+        btnClear.appendChild(document.createTextNode("Limpar"))
+        this.listEl.appendChild(btnClear)
+        
+        
+        btnClear.onclick = e => this.clearScreen()
+        
+
     }
+
+   
+   
 }
 
 new App()

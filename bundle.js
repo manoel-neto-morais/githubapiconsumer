@@ -35,6 +35,12 @@ var App = /*#__PURE__*/function () {
       };
     }
   }, {
+    key: "clearScreen",
+    value: function clearScreen() {
+      this.repositories = [];
+      this.listEl.innerHTML = "";
+    }
+  }, {
     key: "setLoading",
     value: function setLoading() {
       var loading = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
@@ -137,6 +143,15 @@ var App = /*#__PURE__*/function () {
 
         _this2.listEl.appendChild(listItemEl);
       });
+      var btnClear = document.createElement('button');
+      btnClear.setAttribute("class", "btn btn-secondary");
+      btnClear.setAttribute("type", "submit");
+      btnClear.appendChild(document.createTextNode("Limpar"));
+      this.listEl.appendChild(btnClear);
+
+      btnClear.onclick = function (e) {
+        return _this2.clearScreen();
+      };
     }
   }]);
 
