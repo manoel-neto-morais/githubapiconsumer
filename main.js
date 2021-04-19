@@ -11,6 +11,7 @@ class App {
         this.formEl = document.getElementById("repo-form")
         this.listEl = document.getElementById("repo-list")
         this.inputEl = document.querySelector("input[name=repository]")
+        this.body = document.querySelector("body")
         this.registerHendlers()
     }
 
@@ -25,18 +26,28 @@ class App {
     }
 
     setLoading(loading = true) {
+        
         if (loading === true) {
-
-            let loadingEl = document.createElement('span')
-            loadingEl.appendChild(document.createTextNode("Carregando perfil..."))
+            
+            let loadingEl = document.createElement('div')
             loadingEl.setAttribute("id", "loading")
-            let divEl = document.createElement('div')
-            divEl.setAttribute("id", "carregando")
-            divEl.appendChild(loadingEl)
+            loadingEl.setAttribute('class', 'd-flex justify-content-center flex-column')
+            
+            let spinnerEl = document.createElement("div")
+            spinnerEl.setAttribute('class', 'spinner-grow text-danger')
+            let spanEl = document.createElement('span')
+            spanEl.appendChild(document.createTextNode("Loading..."))
+            
+               
+            loadingEl.appendChild(spinnerEl)
+            loadingEl.appendChild(spanEl)
 
-            this.formEl.appendChild(divEl)
+            
+ 
+            //<span class="visually-hidden">Loading...</span>
+            this.formEl.appendChild(loadingEl)
         } else {
-            document.getElementById('carregando').remove()
+            document.getElementById('loading').remove()
         }
     }
 
@@ -100,6 +111,7 @@ class App {
             listItemEl.appendChild(descriptionEl)
             listItemEl.appendChild(linkEl)
 
+            let cardEl = document.create
             this.listEl.appendChild(listItemEl)
 
         })

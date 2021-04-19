@@ -22,6 +22,7 @@ var App = /*#__PURE__*/function () {
     this.formEl = document.getElementById("repo-form");
     this.listEl = document.getElementById("repo-list");
     this.inputEl = document.querySelector("input[name=repository]");
+    this.body = document.querySelector("body");
     this.registerHendlers();
   }
 
@@ -46,13 +47,11 @@ var App = /*#__PURE__*/function () {
       var loading = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
       if (loading === true) {
-        var loadingEl = document.createElement('span');
-        loadingEl.appendChild(document.createTextNode("Carregando perfil..."));
-        loadingEl.setAttribute("id", "loading");
-        var divEl = document.createElement('div');
-        divEl.setAttribute("id", "carregando");
-        divEl.appendChild(loadingEl);
-        this.formEl.appendChild(divEl);
+        var loadingEl = document.createElement('div'); //loadingEl.appendChild(document.createTextNode("Carregando perfil..."))
+
+        loadingEl.setAttribute("id", "carregando");
+        loadingEl.innerHTML = "<div class=\"progress\">\n            <div class=\"progress-bar progress-bar-striped progress-bar-animated\" role=\"progressbar\"             aria-valuenow=\"75\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 75%\"></div>\n            </div>";
+        this.body.appendChild(loadingEl);
       } else {
         document.getElementById('carregando').remove();
       }
