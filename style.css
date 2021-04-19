@@ -14,33 +14,16 @@ ul {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    display: flexbox;
-    justify-content: center;
+    display: block;
+    
 }
 
 li {
-    clear: both;
+    
     margin-top: 20px;
-
 }
 
-img {
-    width: 80px;
-    float: left;
-    margin-right: 10px;
-}
 
-strong {
-    font-size: 20;
-    margin-top: 0;
-}
-
-p {
-    margin: 0;
-    text-align: justify;
-    line-height: 1;
-    max-height: fit-content;
-}
 
 header {
     display: flex;
@@ -91,22 +74,51 @@ input{
     border-radius: 0.25rem;
     margin-bottom: 2rem;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
+    clear: both;
+    
 }
 
+.card img {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 1.5rem;
+    box-shadow: 1px 1px 7px 1px rgba(0, 0, 0, 0.562);
+}
 
-.card p{
+.description p{
     font-size: 1rem;
-    line-height: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.2rem;
+    
+    text-align: justify;
+    line-height: 1.5;
+    max-height: fit-content;
 }
 
-
-#btnClear {
-
-    display: block;
+.card strong {
+    width: fit-content;
+    font-size: 20;
+    margin-top: 0;
 }
+
+.btnClear{
+    width: 100%;
+}
+.btnClear:hover{
+    background: rgba(241, 9, 9, 0.644);
+}
+.linkAcess{
+    clear: both;
+    text-decoration: none;
+    margin-top: 0.5rem;
+}
+
+.linkAcess:hover {
+    background: rgba(3, 126, 3, 0.473);
+}
+
 footer{
     text-align: center;
     padding: 4rem 0 2rem;

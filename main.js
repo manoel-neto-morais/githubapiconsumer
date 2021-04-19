@@ -101,23 +101,33 @@ class App {
 
             let linkEl = document.createElement("a")
             linkEl.setAttribute("target", "_blank")
+            linkEl.setAttribute("class", "btn btn-dark linkAcess")
             linkEl.appendChild(document.createTextNode('Acessar'))
             linkEl.setAttribute("href", repo.html_url)
 
 
-            let listItemEl = document.createElement("li")
-            listItemEl.appendChild(imgEl)
-            listItemEl.appendChild(titleEl)
-            listItemEl.appendChild(descriptionEl)
-            listItemEl.appendChild(linkEl)
+            //let listItemEl = document.createElement("li")
+            let divEl = document.createElement("li")
+            divEl.setAttribute("class", "card")
 
-            let cardEl = document.create
-            this.listEl.appendChild(listItemEl)
+            let divDescriptionEl = document.createElement('div')
+            divDescriptionEl.setAttribute('class', 'description')
+            
+            divDescriptionEl.appendChild(imgEl)
+            divDescriptionEl.appendChild(titleEl)
+            divDescriptionEl.appendChild(descriptionEl)
+
+            divEl.appendChild(divDescriptionEl)
+            
+            divEl.appendChild(linkEl)
+
+            
+            this.listEl.appendChild(divEl)
 
         })
         
         let btnClear = document.createElement('button')
-        btnClear.setAttribute("class", "btn btn-secondary")
+        btnClear.setAttribute("class", "btn btn-secondary btnClear")
         btnClear.setAttribute("type", "submit")
         btnClear.appendChild(document.createTextNode("Limpar"))
         this.listEl.appendChild(btnClear)
